@@ -27,3 +27,5 @@ This is where you type the content of your note.
 (currently does not work with line breaks)
 
 1. The script will then output the JSON for your signed event.
+
+1. You can broadcast your event to your favorite relay using Postman or another tool.
