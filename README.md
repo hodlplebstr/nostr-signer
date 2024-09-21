@@ -36,7 +36,6 @@ Use \n for line breaks:
 ```  
 This is where you type the content of your note. Also points out that `you can include\n linebreaks \n\n like this\nOR like this.`
 
-
 1. The script will then output the JSON for your signed event. Copy everything, including the square brackets.
 ```
 [
