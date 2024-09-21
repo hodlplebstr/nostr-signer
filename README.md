@@ -22,13 +22,35 @@ NSEC = 'nsec1slgfeunlur9z8jj064jzed0cveee9mzxtp3lcxh454n9u0504jgq7r5fc3'
 1. Start the script  
 `npm start`
 
-1. The first prompt you will see is `Enter your nsec -or- press [enter] for .env: `  
+1. The first prompt you will see is  
+```
+Enter an nsec
+Press [enter] for .env nsec:
+```
 You can enter another nsec here, or press [enter] to use the nsec that you put into your .env file.
 
-1. The second prompt you will see is `Enter your Note Text: `  
-This is where you type the content of your note.  
-(currently does not work with line breaks)
+1. The second prompt you will see is  
+```
+Enter your Note Content
+Use \n for line breaks:
+```  
+This is where you type the content of your note. Also points out that `you can include\n linebreaks \n\n like this\nOR like this.`
 
-1. The script will then output the JSON for your signed event.
 
-1. You can broadcast your event to your favorite relay using Postman or another tool.
+1. The script will then output the JSON for your signed event. Copy everything, including the square brackets.
+```
+[
+    "EVENT",
+    {
+        "id": "642fb5...",
+        "pubkey": "83f1cb...",
+        "created_at": 1726880000,
+        "kind": 1,
+        "content": "copy it all",
+        "tags": [],
+        "sig": "e4a943e5696...."
+    }
+]
+```
+
+1. You can broadcast your event to your favorite relay using Postman or another tool. Some relays you can use are `wss://relay.satoshidnc.com/`, `wss://nos.lol`, or  `wss://relay.primal.net`.
