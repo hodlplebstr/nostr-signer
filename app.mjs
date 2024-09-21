@@ -8,19 +8,18 @@ import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 
 const rl = readline.createInterface({ input, output });
-let nsec = await rl.question('Enter your nsec -or- press [enter] for .env: ');
-const eventContent = await rl.question('Enter your Note Text: ');
+let nsec = await rl.question('Enter an nsec\nPress [enter] for .env nsec: ');
+let eventContent = await rl.question('\nEnter your Note Content\nUse \\n for line breaks: ');
 rl.close();
 
+// cleanup nsec
 nsec = (!nsec) ? process.env.NSEC : nsec;
 nsec = (nsec.slice(0,4) !== "nsec") ? "nsec" + nsec : nsec;
-// console.log(`NSEC: ${nsec}`)
-
 const nsecDecoded = bech32Decoder('nsec', nsec);
 let nsecHex = bytesToHex(nsecDecoded);
-// console.log(`Private Hex: ${nsecHex}`)
-// let pubHex = getPublicKey(nsecHex);
-// console.log(`Public Hex: ${pubHex}`)
+
+// cleanup line breaks
+eventContent = eventContent.replace(/\\n/g, '\n')
 
 // use finalizeEvent from nostr-tools to get the event.id, event.pubkey, event.sig
 const createdAt = Math.floor(Date.now() / 1000);
@@ -44,12 +43,13 @@ if (!verifyEvent(event)) {
         "pubkey": "${event.pubkey}",
         "created_at": ${createdAt},
         "kind": 1,
-        "content": "${eventContent}",
+        "content": ${JSON.stringify(event.content)},
         "tags": [],
         "sig": "${event.sig}"
     }
 ]`;
-  console.log(`### EVENT JSON ###`)
+
+  console.log(`\n### EVENT JSON ###`)
   console.log(eventJson);
   process.exit(1);
 }

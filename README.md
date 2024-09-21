@@ -16,13 +16,16 @@ NSEC = 'nsec1slgfeunlur9z8jj064jzed0cveee9mzxtp3lcxh454n9u0504jgq7r5fc3'
 1. Navigate to your root directory  
 `cd /my/repos/nostr-signer`
 
+1. Install dependencies  
+`npm i`
+
 1. Start the script  
 `npm start`
 
 1. The first prompt you will see is `Enter your nsec -or- press [enter] for .env: `  
 You can enter another nsec here, or press [enter] to use the nsec that you put into your .env file.
 
-1. The second prompt you will is `Enter your Note Text: `  
+1. The second prompt you will see is `Enter your Note Text: `  
 This is where you type the content of your note.  
 (currently does not work with line breaks)
 
